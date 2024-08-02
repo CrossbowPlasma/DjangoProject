@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Switch User{% endblock title %}
+
+{% block content %}
+    <h1>Switch User</h1>
+    <h2>Saved Users:</h2>
+    <ul>
+        {% for user in saved_users %}
+            {% if user.0 != username %}
+                <li><a href="{% url 'restore_user' uname=user.0 upass=user.1 %}">{{ user.0 }}</a></li>
+            {% endif %}
+        {% empty %}
+            <li>No saved users.</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
+
+{% block extra_links %}
+    <a href="{% url 'profile' username=username %}">Back to Profile</a><br><br>  
+    <a href="{% url 'logout_and_redirect' 'login' %}">Log in</a><br><br>
+    <a href="{% url 'logout_and_redirect' 'signup' %}">Sign up</a>  
+{% endblock extra_links %}

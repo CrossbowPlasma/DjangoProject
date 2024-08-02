@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+    {% url 'login' as login_url %}
+    {% with form_action=login_url submit_button_text="Login" %}
+        {% include 'core/form.html' with form_action=form_action submit_button_text=submit_button_text %}
+    {% endwith %}
+{% endblock content %}
+
+{% block messages %}
+    {{ block.super }}
+{% endblock messages %}
+
+{% block extra_links %}
+    <a href="{% url 'logout_and_redirect' 'signup' %}">Sign up</a>  
+{% endblock extra_links %}

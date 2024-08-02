@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Profile | {{ username }}{% endblock title %}
+
+{% block content %}
+    <h1>Welcome, {{ username }}</h1>
+    <form action="">
+        {{ form.as_p }}
+    </form>
+{% endblock content %}
+
+{% block messages %}
+    {{ block.super }}
+{% endblock messages %}
+
+{% block extra_links %}
+    <a href="{% url 'change_password' %}">Change Password</a><br><br>
+    <a href="{% url 'switch_user' %}">Switch User</a><br><br>
+    <a href="{% url 'logout_and_redirect' 'login' %}">Log out</a><br><br>
+{% endblock extra_links %}
